@@ -1,1 +1,1 @@
-# promiseTest - my very first commit
+# promiseTest - my very first GitHub project
