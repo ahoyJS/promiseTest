@@ -2,7 +2,7 @@
 function startWorkers(i)
 {
 
-var i=20000000;
+var workerID;
 var resultList = [];
 
 
@@ -17,10 +17,10 @@ var resultList = [];
 //if (typeof(worker2) == "undefined") { var worker2 = new Worker('worker.js'); }
 
 
-function createWorker(i) {
+function createWorker(workerID) {
     return new Promise(function(resolve) {
         var v = new Worker('worker1.js');
-        v.postMessage(i);
+        v.postMessage(workerID);
         v.onmessage = function(event){
             resolve(event.data);
         };
@@ -31,7 +31,7 @@ function createWorker(i) {
 
 
 var promises = [];
-for(var i = 0; i < 100; i++) { promises.push(createWorker(i)); }
+for(var workerID = 0; workerID < 100; workerID++) { promises.push(createWorker(workerID)); }
         
 Promise.all(promises).then(function(data) { alert(data); });
 

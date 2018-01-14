@@ -7,6 +7,6 @@ var iii;
 
 // this.onmessage needs to be here so that the worker starts running with the right input
 
-this.onmessage = function(messageIn) {  for ( iii = 0; iii < messageIn.data; iii++) { q++;}; postMessage(math.eval('1+1')); }
+this.onmessage = function(messageIn) {  for ( iii = 0; iii < 20000000-messageIn.data*100000; iii++) { q++;}; postMessage(q+math.eval('0')); }
 
 
